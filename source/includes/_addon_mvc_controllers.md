@@ -4,7 +4,7 @@
 <?php
 // addons/HelloWorldBundle/Controller/DefaultController.php
 
-namespace MauticAddons\HelloWorldBundle\Controller;
+namespace MauticAddon\HelloWorldBundle\Controller;
 
 use Mautic\CoreBundle\Controller\FormController;
 

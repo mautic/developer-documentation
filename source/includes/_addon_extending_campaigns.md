@@ -4,7 +4,7 @@
 <?php
 // addons/HelloWorldBundle/EventListener/CampaignSubscriber.php
 
-namespace MauticAddons\HelloWorldBundle\Events;
+namespace MauticAddon\HelloWorldBundle\Events;
 
 use Mautic\CoreBundle\EventListener\CommonSubscriber;
 use Mautic\CampaignBundle\Event as Events;

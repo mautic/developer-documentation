@@ -4,7 +4,7 @@
 <?php
 // addons/HelloWorldBundle/EventListener/EmailSubscriber.php
 
-namespace MauticAddons\HelloWorldBundle\EventListener;
+namespace MauticAddon\HelloWorldBundle\EventListener;
 
 use Mautic\CoreBundle\EventListener\CommonSubscriber;
 use Mautic\EmailBundle\EmailEvents;

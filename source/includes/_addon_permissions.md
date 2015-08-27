@@ -95,7 +95,7 @@ The permission level and permissions are set by the core bundle or addon. For ex
 <?php
 // addons/HelloWorldBundle/Security/Permissions/HelloWorldPermissions.php
 
-namespace MauticAddons\HelloWorldBundle\Security\Permissions;
+namespace MauticAddon\HelloWorldBundle\Security\Permissions;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Mautic\CoreBundle\Security\Permissions\AbstractPermissions;

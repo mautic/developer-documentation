@@ -4,7 +4,7 @@
 <?php
 // addons/HelloWorldBundle/Model/ContactModel.php
 
-namespace MauticAddons\HelloWorldBundle\Model;
+namespace MauticAddon\HelloWorldBundle\Model;
 
 use Mautic\CoreBundle\Model\CommonModel;
 

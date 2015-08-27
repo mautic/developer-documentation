@@ -15,7 +15,7 @@ To translate the addon's tab in the configuration form, be sure to include <code
 <?php
 // addons/HelloWorldBundle/EventListener/ConfigSubscriber.php
 
-namespace MauticAddons\HelloWorldBundle\EventListener;
+namespace MauticAddon\HelloWorldBundle\EventListener;
 
 use Mautic\ConfigBundle\Event\ConfigEvent;
 use Mautic\CoreBundle\EventListener\CommonSubscriber;
@@ -94,7 +94,7 @@ Remember that the subscriber must be registered through the addon's config in th
 <?php
 // addons/HelloWorldBundle/Form/Type/ConfigType.php
 
-namespace MauticAddons\HelloWorldBundle\Form\Type;
+namespace MauticAddon\HelloWorldBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
