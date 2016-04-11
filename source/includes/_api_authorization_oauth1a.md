@@ -1,12 +1,12 @@
 ### OAuth 1a
 ```php
 <?php
-use Mautic\Auth\ApiAuth
+use Mautic\Auth\ApiAuth;
 
 // ApiAuth::initiate will accept an array of OAuth settings
 $settings = array(
     'baseUrl'      => 'https://your-mautic.com',
-    'version'      => 'OAuth1a'
+    'version'      => 'OAuth1a',
     'clientKey'    => '5ad6fa7asfs8fa7sdfa6sfas5fas6asdf8',
     'clientSecret' => 'adf8asf7sf54asf3as4f5sf6asfasf97dd', 
     'callback'     => 'https://your-callback.com'

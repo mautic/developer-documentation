@@ -65,7 +65,7 @@ alias|string|Alias of the list
 <?php
 
 //...
-$response = $listApi->addLead($leadId, $listId);
+$response = $listApi->addLead($listId, $leadId);
 if (!isset($response['success'])) {
     // handle error
 }
@@ -95,7 +95,7 @@ See JSON code example.
 <?php
 
 //...
-$response = $listApi->removeLead($leadId, $listId);
+$response = $listApi->removeLead($llistId, $leadId);
 if (!isset($response['success'])) {
     // handle error
 }
