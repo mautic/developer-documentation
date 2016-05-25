@@ -350,7 +350,7 @@ Delete a lead.
 
 #### HTTP Request
 
-`DELETE /leads/ID`
+`DELETE /leads/ID/delete`
 
 #### Response
 
