@@ -360,6 +360,85 @@ Delete a lead.
 
 Same as [Get Lead](#get-lead).
 
+### Get Contact Timeline (only visited url)
+
+```php
+<?php
+//...
+$lead = $leadApi->leadHistory($id);
+```
+```json
+{
+     "lead": {
+         "0": {
+               "id" : 40308,
+               "page_id" : null,
+               "redirect_id" : null,
+               "email_id" : null,
+               "lead_id" : 8,
+               "ip_id" : 184,
+               "date_hit" : "2016-04-27 17:39:24",
+               "date_left" : "2016-04-27 17:40:21",
+               "country" : "",
+               "region" : "",
+               "city" : "",
+               "isp" : "",
+               "organization" : "",
+               "code" : 200,
+               "referer" : "http://site.com/blog",
+               "url" : "http://site.com/blog/article1",
+               "url_title" : null,
+               "user_agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.86 Safari/537.36",
+               "remote_host" : null,
+               "page_language" : null,
+               "browser_languages" : 'a:5:{i:0;s:5:"fr-FR";i:1;s:8:"fr;q=0.8";i:2;s:11:"en-US;q=0.6";i:3;s:8:"en;q=0.4";i:4;s:8:"de;q=0.2";}',
+               "tracking_id" : "878b33b0f9da295eda1eb8029dedf285d08eedad",
+               "source" : null,
+               "source_id" : null,
+               "query" : "a:0:{}"
+          }
+          "1": {
+               "id" : 40308,
+               "page_id" : null,
+               "redirect_id" : null,
+               "email_id" : null,
+               "lead_id" : 8,
+               "ip_id" : 184,
+               "date_hit" : "2016-04-27 17:39:24",
+               "date_left" : "2016-04-27 17:40:21",
+               "country" : "",
+               "region" : "",
+               "city" : "",
+               "isp" : "",
+               "organization" : "",
+               "code" : 200,
+               "referer" : "http://site.com/blog/article1",
+               "url" : "http://site.com/blog",
+               "url_title" : null,
+               "user_agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.86 Safari/537.36",
+               "remote_host" : null,
+               "page_language" : null,
+               "browser_languages" : 'a:5:{i:0;s:5:"fr-FR";i:1;s:8:"fr;q=0.8";i:2;s:11:"en-US;q=0.6";i:3;s:8:"en;q=0.4";i:4;s:8:"de;q=0.2";}',
+               "tracking_id" : "878b33b0f9da295eda1eb8029dedf285d08eedad",
+               "source" : null,
+               "source_id" : null,
+               "query" : "a:0:{}"
+          }
+     }
+}
+```
+Get an individual contact timeline by contact ID.
+
+#### HTTP Request
+
+`GET leads/ID/history`
+
+#### Response
+
+`Expected Response Code: 200`
+
+Return `empty` when the lead does not exist or that the lead has not visited url.
+
 ### List Available Owners
 ```php
 <?php
