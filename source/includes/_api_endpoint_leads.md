@@ -360,16 +360,16 @@ Delete a lead.
 
 Same as [Get Lead](#get-lead).
 
-### Get Contact Timeline (only visited url)
+### Get URL history of a Contact
 
 ```php
 <?php
 //...
-$lead = $leadApi->leadHistory($id);
+$lead = $leadApi->getContactHistory($id);
 ```
 ```json
 {
-     "lead": {
+     "contact": {
          "0": {
                "id" : 40308,
                "page_id" : null,
@@ -427,11 +427,11 @@ $lead = $leadApi->leadHistory($id);
      }
 }
 ```
-Get an individual contact timeline by contact ID.
+Get all informations form pages_hit table for a contact
 
 #### HTTP Request
 
-`GET leads/ID/history`
+`GET contacts/ID/history`
 
 #### Response
 
