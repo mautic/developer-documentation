@@ -139,3 +139,31 @@ See JSON code example.
 **Properties**
 
 Same as [Get Point Action](#get-point-action).
+
+### Apply Rule
+```php
+<?php
+// ...
+
+$leadId = 215;
+$pointApi  = MauticApi::getContext("points", $auth, $apiUrl);
+$points = $pointApi->getList();
+
+foreach ($points['points'] as $k => $point) {
+	if($point['name'] === "RuleName") {
+		$idPoint = $point['id'];
+		break;
+	}
+}
+
+$apprule = $pointApi->applyRule($idPoint, $leadId);
+```
+Application of a rule has a point's lead.
+
+#### HTTP Reques
+
+`PATCH /points/ID_POINT/contact/ID_LEAD`
+
+#### Response
+
+`Expected Response Code: 200`
