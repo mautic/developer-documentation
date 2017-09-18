@@ -1281,6 +1281,23 @@ page|int|Current page number
 limit|int|Limit of events per page
 maxPages|int|How many pages of events are there
 
+### Get a list of contacts with web activity last $minutes
+```php
+<?php
+$contacts = $contactApi->getContactsRecentWebActivity($minutes);
+```
+** Query Parameters **
+
+Name|Description
+----|-----------
+minutes|Integer, number of minutes from now
+
+#### HTTP Request
+`GET /contacts/recentwebactivity/MINUTES`
+#### Response
+Array of contacts, NULL if empty
+`Expected Response Code: 200`
+
 ### Get Contact's Companies
 ```php
 <?php
