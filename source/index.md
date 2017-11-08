@@ -93,6 +93,7 @@ includes:
   - api_endpoint_notes
   - api_endpoint_notifications
   - api_endpoint_pages
+  - api_endpoint_plugins
   - api_endpoint_point_actions
   - api_endpoint_point_triggers
   - api_endpoint_roles
