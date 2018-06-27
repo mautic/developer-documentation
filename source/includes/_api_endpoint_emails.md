@@ -145,6 +145,7 @@ category|object/null|Category information
 unsubscribeForm|int|Id of the form displayed in the unsubscribe page
 dynamicContent|object|Dynamic content configuration
 lists|array|Array of segment IDs which should be added to the segment email
+assetAttachments|array|asset IDs Array for email attachment
 
 ### List Emails
 ```php
@@ -414,13 +415,78 @@ Same as [Get Email](#get-email).
 ```php
 <?php
 
-$email = $emailApi->sendToContact($emailId, $contactId);
+$email = $emailApi->sendToContact($emailId, $contactId, $tokens);
 ```
 Send a predefined email to existing contact.
 
 #### HTTP Request
 
-`DELETE /emails/ID/send/contact/CONTACT_ID`
+`POST /emails/ID/contact/CONTACT_ID/send`
+
+**Post Parameters**
+
+Name|Type|Description
+----|----|-----------
+tokens|array|Array of tokens in email. Use ignoreDNC=1 If you want to  sent email even contact is unsubscribed. 
+
+#### Response
+
+`Expected Response Code: 200`
+
+**Properties**
+```json
+{
+    "success": 1
+}
+```
+
+### Send Custom HTML to Contact
+```php
+<?php
+
+$email = $emailApi->sendCustomToContact($emailId, $params);
+```
+Send a custom HTML to existing contact. This event is saved to contact's profile, same like button Send email from contact's detail page.
+
+#### HTTP Request
+
+`POST /emails/contact/{contactId}/send/custom`
+
+**Post Parameters**
+
+Name|Type|Description
+----|----|-----------
+$params|array|Array of parameters (fromEmail, fromName, replyToEmail, replyToName, subject, content)
+
+#### Response
+
+`Expected Response Code: 200`
+
+**Properties**
+```json
+{
+    "success": 1,
+    "trackingHash" => "xxxxxx"
+}
+```
+
+### Send Custom HTML to any email address
+```php
+<?php
+
+$email = $emailApi->sendCustom($params);
+```
+Send a custom HTML to any email address. This event is not related to contact and not stored to profile. You can use it for example for send email notification to administrator.
+
+#### HTTP Request
+
+`POST /emails/send/custom`
+
+**Post Parameters**
+
+Name|Type|Description
+----|----|-----------
+$params|array|Array of parameters (toEmail, toName, fromEmail, fromName, replyToEmail, replyToName, subject, content)
 
 #### Response
 
@@ -443,7 +509,7 @@ Send a segment email to linked segment(s).
 
 #### HTTP Request
 
-`DELETE /emails/ID/send`
+`POST /emails/ID/send`
 
 #### Response
 
