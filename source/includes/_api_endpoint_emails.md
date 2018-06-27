@@ -466,7 +466,7 @@ $params|array|Array of parameters (fromEmail, fromName, replyToEmail, replyToNam
 ```json
 {
     "success": 1,
-    "trackingHash" => "xxxxxx"
+    "trackingHash" : "xxxxxx"
 }
 ```
 
