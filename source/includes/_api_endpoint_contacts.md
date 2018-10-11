@@ -327,7 +327,7 @@ To edit a contact and create a new one if the contact is not found:
 
 `PUT /contacts/ID/edit`
 
-** Post Parameters **
+** Body Parameters **
 
 Name|Description
 ----|-----------
