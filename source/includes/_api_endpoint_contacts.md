@@ -450,6 +450,36 @@ channel|Channel of DNC. For example 'email', 'sms'... Default is email.
 
 Same as [Get Contact](#get-contact).
 
+### Import Contacts from CSV file
+```php
+<?php
+
+$contactApi->importCsv($mapping, $config, $file);
+```
+Import contacts from a CSV file
+
+#### HTTP Request
+
+To add contacts from a CSV file:
+
+`POST /contacts/importCsv`
+
+**Data Parameters**
+Name|Description
+----|-----------
+mapping| JSON mapping of CSV columns in format: {"csv_column": "mautic_field", ...}
+config| Import configuration JSON object in format: {'delimiter': ',','enclosure': '"','escape': '\\','batchlimit':'200'}
+file| Multipart-encoded CSV file
+
+#### Response
+
+`Expected Response Code: 200`
+```json
+{
+    "success": true
+}
+```
+
 ### Add UTM Tags
 ```php
 <?php
