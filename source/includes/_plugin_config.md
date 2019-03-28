@@ -234,6 +234,8 @@ Array Key|Required|Type|Description
 ```
 
 Services are PHP objects stored in the service container and are used all throughout Mautic. They can be as simple or as complex as required. Read more about Symfony's service container [here](http://symfony.com/doc/2.8/book/service_container.html). 
+
+The override of existing services is forbidden by default. You can allow the override by expliciting setting the parameter `plugin_allow_overrides` equal to `true` in the `app/config/local.php` file.
    
 #### Service types
 Mautic allows easy configuration for four types of services:
