@@ -321,6 +321,49 @@ owner|ID of a Mautic user to assign this contact to
 
 Same as [Get Contact](#get-contact).
 
+### Create Batch Contact
+```php
+<?php
+
+$data = array(
+    array(
+	'firstname' => 'Jim',
+	'lastname'  => 'Contact',
+	'email'     => 'jim@his-site.com',
+	'ipAddress' => $_SERVER['REMOTE_ADDR']
+    ),
+    array(
+    	'firstname' => 'John',
+	'lastname'  => 'Doe',
+	'email'     => 'john@his-site.com',
+	'ipAddress' => $_SERVER['REMOTE_ADDR']
+    )
+);
+$contact = $contactApi->createBatch($data);
+```
+Create a batch of new contacts.
+
+#### HTTP Request
+
+`POST /contacts/batch/new`
+
+** Post Parameters **
+
+Name|Description
+----|-----------
+*|Any contact field alias can be posted as a parameter.  For example, firstname, lastname, email, etc.
+ipAddress|IP address to associate with the contact
+lastActive|Date/time in UTC; preferablly in the format of Y-m-d H:m:i but if that format fails, the string will be sent through PHP's strtotime then formatted
+owner|ID of a Mautic user to assign this contact to
+
+#### Response
+
+`Expected Response Code: 201`
+
+** Properties **
+
+Same as [Get Contact](#get-contact).
+
 ### Edit Contact
 ```php
 <?php
