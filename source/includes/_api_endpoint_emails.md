@@ -295,8 +295,9 @@ customHtml|string|The HTML content of the email
 plainText|string|The plain text content of the email
 template|string|The name of the template used as the base for the email
 emailType|string|If it is a segment (former list) email or template email. Possible values are 'list' and 'template'
-translationChildren|array|Array of Page entities for translations of this landing page
-translationParent|object|The parent/main page if this is a translation
+translationChildren|array|Array of email entities for translations of this email
+templateTranslationParent|object|(Only if emailType is 'template') The parent/main email if this is a translation.
+segmentTranslationParent|object|(Only if emailType is 'list') The parent/main email if this is a translation.
 variantSentCount|int|Sent count since variantStartDate
 variantReadCount|int|Read count since variantStartDate
 variantChildren|array|Array of Email entities for variants of this landing email
