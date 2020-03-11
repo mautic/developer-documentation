@@ -431,6 +431,8 @@ Name|Type|Description
 ----|----|-----------
 tokens|array|Array of tokens in email
 assetAttachments|array|Array of asset ids
+ccRecipients|array|Array of additional cc recipients [[address => name]]
+bccRecipients|array|Array of additional bcc recipients [[address => name]]
 
 #### Response
 
