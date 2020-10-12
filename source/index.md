@@ -15,6 +15,7 @@ includes:
   - plugin_migrations
   - plugin_migrations_1.2
   - plugin_migrations_2.0
+  - plugin_migrations_3.0
   - plugin_structure
   - plugin_install
   - plugin_config

@@ -123,6 +123,68 @@ General|isAuthorized|Called to determine if the integration is authorized (or pe
 Request|makeRequest|Can be used to make API requests. It automatically handles standard key, oauth1a and oauth2 specs.
 Form|getFormSettings|Returns an array of options of what to display in integration's configuration form. The two options used at this time is `requires_callback` (true to show a readonly input with the callback returned by getAuthCallbackUrl()) and `requires_authorization` (true to display the authorization button).
 Form|getFormNotes|Returns an array of "helper notes" to display in the various areas of the form. 
+
+```php
+
+class XyzController extends CommonController
+{
+    public function someAction()
+    {
+        $token = 'abc';
+        $idtoken = 'xyz';
+        
+        /*as defined in config file*/    
+        $service = $this->get('mautic.integration.servicename');      
+        $serviceIntegrationObject = $this->getLineIntegrationObject($service);
+
+        /*
+        get request example
+        */
+        $response = $serviceIntegrationObject->makeRequest(
+            'https://example.com/api/product',
+            [
+                /*parameters, can be passed in url as well in case of get request*/
+                'fields' => '[\'name\',\'price\']',
+                'limit' => 10
+            ],
+            'GET',
+            [
+                'headers' => [
+                    'Content-Type' => 'application/x-www-form-urlencoded',
+                    'charset' => 'utf-8',
+                    'access_token' => $token
+                ]
+            ]
+        );
+
+        /*
+        post request example
+        */
+        $response = $serviceIntegrationObject->makeRequest(
+            'https://example.com/oauth2/v2.1/verify',
+            [
+                'id_token' => $idtoken,
+                'client_id' => $serviceIntegrationObject->getKeys()['client_id']
+            ],
+            'POST',
+            [
+                /*headers, if any*/
+            ]
+        );
+
+    }
+
+    private function getIntegrationObject($service)
+    {
+        /** @var \Mautic\PluginBundle\Helper\IntegrationHelper $integrationHelper */
+        $integrationHelper = $this->get('mautic.helper.integration');
+        /** @var AbstractIntegration $integrationObject */
+        return $integrationHelper->getIntegrationObject($service->getName());
+    }
+}
+
+```
+
 #### makeRequest()
 
 makeRequest() can be used to automatically sign outgoing requests and/or authentication processes. Of course, any integration can inherit and override this class to suit the integrations needs. It accepts the following parameters:
@@ -146,3 +208,8 @@ ssl_verifypeer|bool|Set the CURLOPT_SSL_VERIFYPEER to true.
 curl_options|array|Custom set of curl options to apply to the request.
 return_raw|bool|If true, return the response rather than running it through parseCallbackResponse first.
 authorize_session|bool|Used by prepareRequest() and parseCallbackResponse() to change the behavior based on whether the if the request is obtaining authorization or just making an API call.
+
+#### Mautic 3.x
+- Removed deprecated method `Mautic\PluginBundle\Integration\AbstractIntegration::init()`
+- Removed deprecated method `Mautic\PluginBundle\Integration\AbstractIntegration::getUserId()`
+- Changed constructor args in `\Mautic\PluginBundle\Integration\AbstractIntegration` and removed setter methods used by IntegrationPass

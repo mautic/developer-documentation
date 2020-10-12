@@ -29,6 +29,10 @@ There are some structural differences between Mautic and standard Symfony. Below
  
  Most of Symfony's standard locations, such as the Resources/views and Resources/translations directories, should still function with Mautic. However, it may be required to handle service registration, etc with native Symfony processes if not using the Mautic methods defined in this document. 
  
+ ### Mautic 3.x and Symfony 3.4
+ With release of Mautic 3.x Symfony version has also been updated. Mautic 3.x uses [Symfony 3.4](https://symfony.com/doc/3.4/index.html). For detailed information of what changed with symfony 3 please read [UPGRADE-3.0](https://github.com/mautic/mautic/blob/3.x/UPGRADE-3.0.md). Major notable change in the filesystem is `app/log` and `app/cache` is not part of `var/logs` and `var/cache`. Also `app/console` is now `bin/console`. 
+
+ 
 ## Development Environment
 
 ### Setup
@@ -69,6 +73,8 @@ There are three environments in Mautic: prod, dev, and test.
 ### Cache
 
 Symfony makes heavy use of a filesystem cache. Frequently clearing this cache will be required when developing for Mautic. By default, the cache is located in app/cache/ENV where ENV is the environment currently accessed (i.e. dev or prod). To rebuild the cache, the ENV can just be deleted or run the Symfony command `php app/console cache:clear --env=ENV` If a specific environment is not passed to the command via `--env=ENV`, the dev environment will be used by default.
+ 
+ > `php bin/console` shall be used for Mautic 3.x
  
  In the dev environment, translations, views, and assets are not cached. However, changes to these files will require the cache to be cleared for them to take effect in the prod environment. Changes to Mautic config files, Symfony config files, etc will require the cache to be cleared regardless of environment.
  
