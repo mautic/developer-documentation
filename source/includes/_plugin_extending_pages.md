@@ -8,7 +8,7 @@ namespace MauticPlugin\HelloWorldBundle\EventListener;
 
 use Mautic\PageBundle\PageEvents;
 use Mautic\PageBundle\Event\PageBuilderEvent;
-use Mautic\PageBundle\Event\PageSendEvent;
+use Mautic\PageBundle\Event\PageDisplayEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -58,9 +58,9 @@ class PageSubscriber implements EventSubscriberInterface
     /**
      * Search and replace tokens with content
      *
-     * @param PageSendEvent $event
+     * @param PageDisplayEvent $event
      */
-    public function onPageDisplay(PageSendEvent $event)
+    public function onPageDisplay(PageDisplayEvent $event)
     {
         // Get content
         $content = $event->getContent();
