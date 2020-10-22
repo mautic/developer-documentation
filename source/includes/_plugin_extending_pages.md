@@ -1,11 +1,34 @@
 ### Extending Landing Pages
 
+Make sure you reigster the event listener in your `config.php`:
+
+```php
+<?php
+// plugins/HelloWorldBundle/config.php
+
+use MauticPlugin\HelloWorldBundle\EventListener\PageSubscriber;
+
+return [
+    'services' => [
+        'events' => [
+            'plugin.helloworld.page.subscriber' => array(
+                'class' => PageSubscriber::class,
+                'arguments' => [
+                    'mautic.helper.templating'
+                ]
+            )
+        ],
+    ],
+];
+
+```
 ```php
 <?php
 // plugins/HelloWorldBundle/EventListener/PageSubscriber.php
 
 namespace MauticPlugin\HelloWorldBundle\EventListener;
 
+use Mautic\CoreBundle\Helper\TemplatingHelper;
 use Mautic\PageBundle\PageEvents;
 use Mautic\PageBundle\Event\PageBuilderEvent;
 use Mautic\PageBundle\Event\PageDisplayEvent;
@@ -16,6 +39,15 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class PageSubscriber implements EventSubscriberInterface
 {
+    /**
+     * @var TemplatingHelper
+     */
+    private $templating;
+
+    public function __construct(TemplatingHelper $templating)
+    {
+        $this->templating = $templating;
+    }
 
     /**
      * @return array
@@ -36,8 +68,9 @@ class PageSubscriber implements EventSubscriberInterface
     public function onPageBuild(PageBuilderEvent $event)
     {
         // Add page tokens
-        $content = $this->templating->render('HelloWorldBundle:SubscribedEvents\PageToken:token.html.php');
-        $event->addTokenSection('helloworld.token', 'plugin.helloworld.header', $content);
+        if ($event->tokensRequested('{myToken}')) {
+            $event->addToken('{myToken}', 'My Token');
+        }
 
         // Add AB Test Winner Criteria
         $event->addAbTestWinnerCriteria(
@@ -66,7 +99,10 @@ class PageSubscriber implements EventSubscriberInterface
         $content = $event->getContent();
 
         // Search and replace tokens
-        $content = str_replace('{hello}', 'world!', $content);
+        $html = $this->templating->getTemplating()->render(
+            'HelloWorldBundle:SubscribedEvents\PageToken:token.html.php'
+        );
+        $content = str_replace('{myToken}', $html, $content);
 
         // Set updated content
         $event->setContent($content);
