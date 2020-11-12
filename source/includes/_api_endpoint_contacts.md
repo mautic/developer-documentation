@@ -432,7 +432,7 @@ $contact = $contactApi->editBatch($data);
 ```
 Edit several contacts in one request.  Note that this supports PUT or PATCH depending on the desired behavior.
 
-** PUT ** creates a contact if the given ID does not exist and clears all the contact information, adds the information from the request.
+**PUT** creates a contact if the given ID does not exist and clears all the contact information, adds the information from the request.
 **PATCH** fails if the contact with the given ID does not exist and updates the contact field values with the values form the request.
 
 #### HTTP Request
@@ -445,7 +445,7 @@ To edit a contact and create a new one if the contact is not found:
 
 `PUT /contacts/batch/edit`
 
-** Post Parameters **
+**Post Parameters**
 
 Name|Description
 ----|-----------
@@ -461,9 +461,9 @@ If `PUT`, the expected response code is `200` if the contact was edited or `201`
 
 If `PATCH`, the expected response code is `200`.
 
-** Properties **
+**Properties**
 
-Same as [Get Contact](#get-contact).
+Contacts array. Record same as [Get Contact](#get-contact).
 
 > Note: In order to remove tag from contact add minus `-` before it.
 > For example: `tags: ['one', '-two']`  - sending this in request body will add tag `one` and remove tag `two` from contact.
