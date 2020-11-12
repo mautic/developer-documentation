@@ -447,7 +447,7 @@ If you are not using PHP, here is URL example:
 
 `Expected Response Code: 200`
 
-** Properties **
+**Properties**
 
 Contacts array. Record same as [Get Contact](#get-contact).
 
