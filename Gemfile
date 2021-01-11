@@ -15,7 +15,7 @@ gem 'middleman-gh-pages'
 # Live-reloading plugin
 gem "middleman-livereload", "~> 3.3.0"
 
-gem 'redcarpet', '~> 3.2.1'
+gem 'redcarpet', '~> 3.5.1'
 
 # For faster file watcher updates on Windows:
 gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
