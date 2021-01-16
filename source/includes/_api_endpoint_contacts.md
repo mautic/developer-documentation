@@ -439,9 +439,9 @@ Delete contacts.
 
 `DELETE /contacts/batch/delete`
 
-If you are not using PHP, here is URL example:
+If you are not using PHP, here is a URL example:
 
-`GET https://[your_mauitc_domain]/api/contacts/batch/delete?ids[]=1&ids[]=2`
+`DELETE https://[your_mautic_domain]/api/contacts/batch/delete?ids=1,2`
 
 #### Response
 
