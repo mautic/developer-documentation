@@ -362,7 +362,7 @@ owner|ID of a Mautic user to assign this contact to
 
 ** Properties **
 
-Same as [Get Contact](#get-contact).
+Array of contacts. Record is the same as [Get Contact](#get-contact).
 
 ### Edit Contact
 ```php
