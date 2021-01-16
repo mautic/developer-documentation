@@ -7,3 +7,6 @@ gem 'middleman-autoprefixer', '~> 2.7.0'
 gem "middleman-sprockets", "~> 4.1.0"
 gem 'rouge', '~> 2.0.5'
 gem 'redcarpet', '~> 3.4.0'
+
+# For deploying to Mautic's live server
+gem 'middleman-deploy', '~> 1.0'
