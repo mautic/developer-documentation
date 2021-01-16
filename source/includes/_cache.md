@@ -102,7 +102,7 @@ In order to use another adapter just set it up as a service
 The cache is cleared when **cache:clear** command is run. The cache can be cleared by running
 
 ```bash
-app/console  mautic:cache:clear
+bin/console mautic:cache:clear
 ```
 
 ## Features auto pruning on adapter initialization
