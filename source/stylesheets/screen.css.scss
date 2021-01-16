@@ -1,8 +1,6 @@
 @charset "utf-8";
 @import 'normalize';
-@import 'compass';
 @import 'variables';
-@import 'syntax';
 @import 'icon-font';
 @import 'font-awesome.min.css';
 
@@ -61,25 +59,16 @@ html, body {
 }
 */
 @mixin embossed-bg {
-  @include background(
-    linear-gradient(top,
-                    rgba(#000, 0.2),
-                    rgba(#000, 0) 8px),
-    linear-gradient(bottom,
-                    rgba(#000, 0.2),
-                    rgba(#000, 0) 8px),
-    linear-gradient(top,
-                    rgba($nav-embossed-border-top, 1),
-                    rgba($nav-embossed-border-top, 0) 1.5px),
-    linear-gradient(bottom,
-                    rgba($nav-embossed-border-bottom, 1),
-                    rgba($nav-embossed-border-bottom, 0) 1.5px),
-    $nav-subitem-bg
-  );
+  background:
+    linear-gradient(to bottom, rgba(#000, 0.2), rgba(#000, 0) 8px),
+    linear-gradient(to top, rgba(#000, 0.2), rgba(#000, 0) 8px),
+    linear-gradient(to bottom, rgba($nav-embossed-border-top, 1), rgba($nav-embossed-border-top, 0) 1.5px),
+    linear-gradient(to top, rgba($nav-embossed-border-bottom, 1), rgba($nav-embossed-border-bottom, 0) 1.5px),
+    $nav-subitem-bg;
 }
 
 .tocify-wrapper {
-  @include transition(left ease-in-out 0.3s);
+  transition: left 0.3s ease-in-out;
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
@@ -114,7 +103,7 @@ html, body {
       border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
       padding: 6px 0 6px 20px;
-      @include box-sizing(border-box);
+      box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
       width: $nav-width - 30;
       outline: none;
@@ -137,13 +126,13 @@ html, body {
 
   .search-results {
     margin-top: 0;
-    @include box-sizing(border-box);
+    box-sizing: border-box;
     height: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    @include transition-property(height margin);
-    @include transition-duration(180ms);
-    @include transition-timing-function(ease-in-out);
+    transition-property: height, margin;
+    transition-duration: 180ms;
+    transition-timing-function: ease-in-out;
     &.visible {
       height: 30%;
       margin-bottom: 1em;
@@ -186,9 +175,9 @@ html, body {
 
   li {
     color: $nav-text;
-    @include transition-property('background');
-    @include transition-timing-function('linear');
-    @include transition-duration(230ms);
+    transition-property: background;
+    transition-timing-function: linear;
+    transition-duration: 230ms;
   }
 
   // This is the currently selected ToC entry
@@ -278,8 +267,8 @@ html, body {
     $side-pad: $main-padding / 2 - 8px;
     padding: $side-pad $side-pad $side-pad;
     background-color: rgba($main-bg, 0.7);
-    @include transform-origin(0, 0);
-    @include transform(rotate(-90deg) translate(-100%, 0));
+    transform-origin: 0 0;
+    transform: rotate(-90deg) translate(-100%, 0);
     border-radius: 0 0 0 5px;
   }
   padding: 0 1.5em 5em 0; // increase touch size area
@@ -298,7 +287,7 @@ html, body {
     vertical-align: bottom;
   }
 
-  @include transition(left ease-in-out 0.3s);
+  transition: left 0.3s ease-in-out;
 
   &:hover { opacity: 1; }
   &.open {left: $nav-width}
@@ -389,9 +378,9 @@ html, body {
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width;
     padding: 0 $main-padding;
-    @include box-sizing(border-box);
+    box-sizing: border-box;
     display: block;
-    @include text-shadow($main-embossed-text-shadow);
+    text-shadow: $main-embossed-text-shadow;
 
     @extend %left-col;
   }
@@ -436,9 +425,7 @@ html, body {
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
-    @include background-image(
-      linear-gradient(top, rgba(#fff,0.4), rgba(#fff, 0))
-    );
+    background-image: linear-gradient(to bottom, rgba(#fff, 0.4), rgba(#fff, 0));
   }
 
   // h2s right after h1s should bump right up
@@ -548,15 +535,14 @@ html, body {
   aside {
     padding-top: 1em;
     padding-bottom: 1em;
+    text-shadow: 0 1px 0 lighten($aside-notice-bg, 15%);
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    line-height: 1.6;
-    @include text-shadow(0 1px 0 lighten($aside-bg, 15%));
     color: $aside-text;
     background: $aside-bg;
 
     &.notice {
-      @include text-shadow(0 1px 0 lighten($aside-notice-bg, 15%));
+      text-shadow: 0 1px 0 lighten($aside-notice-bg, 15%);
       color: $aside-notice-text;
       background: $aside-notice-bg;
 
@@ -568,14 +554,12 @@ html, body {
 
     &.warning {
       background-color: $aside-warning-bg;
-      @include text-shadow(0 1px 0 lighten($aside-warning-bg, 15%));
-      color: $aside-warning-text;
+      text-shadow: 0 1px 0 lighten($aside-warning-bg, 15%);
     }
 
     &.success {
       background-color: $aside-success-bg;
-      @include text-shadow(0 1px 0 lighten($aside-success-bg, 15%));
-      color: $aside-success-text;
+      text-shadow: 0 1px 0 lighten($aside-success-bg, 15%);
     }
   }
 
@@ -602,7 +586,7 @@ html, body {
     margin: -2px;
     border-radius: 4px;
     border: 1px solid #F7E633;
-    @include background(linear-gradient(bottom right, #F7E633 0%, #F1D32F 100%));
+    background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
 }
 
@@ -623,8 +607,8 @@ html, body {
     float:right;
     clear:right;
 
-    @include box-sizing(border-box);
-    @include text-shadow(0px 1px 2px rgba(0,0,0,0.4));
+    box-sizing: border-box;
+    text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
 
     @extend %right-col;
 
