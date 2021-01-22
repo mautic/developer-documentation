@@ -7,3 +7,10 @@ For [controllers](#controllers), extend either `\Mautic\CoreBundle\Controller\Co
 For [models](#models), it will be available via `$this->factory` by default.
   
 For custom [services](#services), pass 'mautic.factory' as an argument and MauticFactory will be passed into the __construct of the service.
+
+#### Mautic 3.x
+- `MauticFactory` no longer injected into `CommonRepository` classes thus `CommonRepository::setFactory()` and `$this->factory` removed
+- `MauticFactory` no longer made available to `AbstractMauticMigration;` use `$this->container` instead
+<aside class="warning">
+Mautic 3.x removed MauticFactory, should use the service container and proper DI instead.
+</aside>
