@@ -21,7 +21,7 @@ An example HelloWorld plugin is available [here](https://github.com/mautic/plugi
 
 1. Read about [the sync engine](#integration-sync-engine).
 
-*If the integration has includes a builder integration (email or landing page)*
+*If the integration includes a builder integration (email or landing page)*
 
 1. [Register the integration](#registering-the-integration-for-builders) as an integration that provides a custom builder. 
 2. Configure what featured builders the integration supports (Mautic currently supports "email" and "page" builders).
