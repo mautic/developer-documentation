@@ -345,7 +345,7 @@ See JSON code example.
 
 //...
 $contactIds = ['ids'=>[ 1, 45, 39]];
-$response = $segmentApi->addContact($segmentId, $contactIds);
+$response = $segmentApi->addContacts($segmentId, $contactIds);
 if (!isset($response['success'])) {
     // handle error
 }
