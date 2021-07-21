@@ -443,6 +443,35 @@ assetAttachments|array|Array of asset ids
 }
 ```
 
+### Send Custom HTML to Contact
+```php
+<?php
+$email = $emailApi->sendCustomToContact($emailId, $params);
+```
+Send a custom HTML to existing contact. This event is saved to contact's profile, same like button Send email from contact's detail page.
+
+#### HTTP Request
+
+`POST /emails/contact/{contactId}/send/custom`
+
+**Post Parameters**
+
+Name|Type|Description
+----|----|-----------
+$params|array|Array of parameters (fromEmail - required, fromName, replyToEmail, replyToName, subject - required, content - required)
+
+#### Response
+
+`Expected Response Code: 200`
+
+**Properties**
+```json
+{
+    "success": 1,
+    "trackingHash" : "xxxxxx"
+}
+```
+
 ### Send Email to Segment
 ```php
 <?php
