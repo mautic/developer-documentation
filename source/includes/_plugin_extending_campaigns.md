@@ -4,17 +4,18 @@
 <?php
 // plugins/HelloWorldBundle/EventListener/CampaignSubscriber.php
 
-namespace MauticPlugin\HelloWorldBundle\Events;
+namespace MauticPlugin\HelloWorldBundle\EventListener;
 
-use Mautic\CoreBundle\EventListener\CommonSubscriber;
-use Mautic\CampaignBundle\Event as Events;
 use Mautic\CampaignBundle\CampaignEvents;
 use Mautic\CampaignBundle\Event\CampaignExecutionEvent;
+use Mautic\CampaignBundle\Event\CampaignBuilderEvent;
+use MauticPlugin\HelloWorldBundle\HelloWorldEvents;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Class CampaignSubscriber
  */
-class CampaignSubscriber extends CommonSubscriber
+class CampaignSubscriber implements EventSubscriberInterface
 {
 
     /**
@@ -34,7 +35,7 @@ class CampaignSubscriber extends CommonSubscriber
      *
      * @param Events\CampaignBuilderEvent $event
      */
-    public function onCampaignBuild(Events\CampaignBuilderEvent $event)
+    public function onCampaignBuild( CampaignBuilderEvent $event)
     {
         // Register custom action
         $event->addAction(
@@ -73,7 +74,7 @@ class CampaignSubscriber extends CommonSubscriber
      *
      * @param CampaignExecutionEvent $event
      */
-    public function executeCampaignAction (CampaignExecutionEvent $event)
+    public function executeCampaignAction( CampaignExecutionEvent $event)
     {
         // Do blastoff
 
@@ -85,7 +86,7 @@ class CampaignSubscriber extends CommonSubscriber
      *
      * @param CampaignExecutionEvent $event
      */
-    public function validateCampaignDecision (CampaignExecutionEvent $event)
+    public function validateCampaignDecision( CampaignExecutionEvent $event)
     {
         $valid = ($event->getEventDetails()->getId() === $event->getConfig()['id']);
         $event->setResult($valid);
