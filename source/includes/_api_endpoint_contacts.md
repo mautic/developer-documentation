@@ -525,7 +525,7 @@ The batch size limit is configurable with the `api_batch_max_limit` option. The 
 
 #### Validation error
 
-In case some of the contacts in the batch have invalid values then the overall response code will be `HTTP/1.1 201 Created` so you'll have to check for the response code for each contact separately in the response. In this example there were 2 contacts sent and one of them had invalid email address. The key in the error JSON object equals the key in the request starting from zero. In the example response the key is `"1"` which means the secod contact had invalid email address.
+In case some of the contacts in the batch have invalid values then the overall response code will be `201 Created` so you'll have to check for the response code for each contact separately in the response. In this example there were 2 contacts sent and one of them had invalid email address. The key in the error JSON object equals the key in the request starting from zero. In the example response the key is `"1"` which means the secod contact had invalid email address.
 
 _Note: Make sure you are not sending multiple contacts with the same unique identifiers (email address by default) in one batch request. Those contacts will get merged into one and then the response key may not match the request key because the response will have less contacts to return._
 
