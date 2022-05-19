@@ -22,6 +22,7 @@ $contactApi = $api->newApi("contacts", $auth, $apiUrl);
 $contact = $contactApi->get($id);
 ```
 ```json
+  {
     "contact": {
         "id": 47,
         "dateAdded": "2015-07-21T12:27:12-05:00",
@@ -105,6 +106,7 @@ $contact = $contactApi->get($id);
             }
         }
     }
+  }
 ```
 Get an individual contact by ID.
 
@@ -320,13 +322,13 @@ Same as [Get Contact](#get-contact).
 ```php
 <?php
 
-$data = array(
+$data = [
     'firstname' => 'Jim',
     'lastname'  => 'Contact',
     'email'     => 'jim@his-site.com',
     'ipAddress' => $_SERVER['REMOTE_ADDR'],
     'overwriteWithBlank' => true,
-);
+];
 
 $contact = $contactApi->create($data);
 ```
@@ -358,20 +360,20 @@ Same as [Get Contact](#get-contact).
 ```php
 <?php
 
-$data = array(
-    array(
-	'firstname' => 'Jim',
-	'lastname'  => 'Contact',
-	'email'     => 'jim@his-site.com',
-	'ipAddress' => $_SERVER['REMOTE_ADDR']
-    ),
-    array(
-    	'firstname' => 'John',
-	'lastname'  => 'Doe',
-	'email'     => 'john@his-site.com',
-	'ipAddress' => $_SERVER['REMOTE_ADDR']
-    )
-);
+$data = [
+    [
+        'firstname' => 'Jim',
+        'lastname'  => 'Contact',
+        'email'     => 'jim@his-site.com',
+        'ipAddress' => $_SERVER['REMOTE_ADDR']
+    ],
+    [
+        'firstname' => 'John',
+        'lastname'  => 'Doe',
+        'email'     => 'john@his-site.com',
+        'ipAddress' => $_SERVER['REMOTE_ADDR']
+    ]
+];
 $contact = $contactApi->createBatch($data);
 ```
 Create a batch of new contacts.
@@ -402,10 +404,10 @@ Array of contacts. Record is the same as [Get Contact](#get-contact).
 <?php
 
 $id   = 1;
-$data = array(
+$data = [
     'email'     => 'jim-new-address@his-site.com',
     'ipAddress' => $_SERVER['REMOTE_ADDR'],    
-);
+];
 
 // Create new a contact of ID 1 is not found?
 $createIfNotFound = true;
@@ -454,22 +456,22 @@ Same as [Get Contact](#get-contact).
 ```php
 <?php
 
-$data = array(
-    array(
+$data = [
+    [
         'id'        => 1,
         'firstname' => 'Jim',
         'lastname'  => 'Contact',
         'email'     => 'jim@his-site.com',
         'ipAddress' => $_SERVER['REMOTE_ADDR']
-    ),
-    array(
+    ],
+    [
         'id'        => 1,
         'firstname' => 'John',
         'lastname'  => 'Doe',
         'email'     => 'john@his-site.com',
         'ipAddress' => $_SERVER['REMOTE_ADDR']
-    )
-);
+    ]
+];
 
 $contact = $contactApi->editBatch($data);
 ```
@@ -534,7 +536,7 @@ Same as [Get Contact](#get-contact).
 ### Delete Batch Contact
 ```php
 <?php
-$data = array(1, 2);
+$data = [1, 2];
 $contact = $contactApi->deleteBatch($data);
 ```
 Delete contacts.
@@ -594,6 +596,7 @@ Same as [Get Contact](#get-contact).
 ### Remove from Do Not Contact
 ```php
 <?php
+
 $contactApi->removeDnc($contactId, $channel);
 ```
 
@@ -619,7 +622,7 @@ Same as [Get Contact](#get-contact).
 ```php
 <?php
 
-$data = array(
+$data = [
     'utm_campaign' => 'apicampaign',
     'utm_source'   => 'fb',
     'utm_medium'   => 'social',
@@ -631,7 +634,7 @@ $data = array(
     'query'        => ['cid'=>'abc','cond'=>'new'], // or as string with "cid=abc&cond=new"
     'remotehost'   => 'example.com',
     'lastActive'   => '2017-01-17T00:30:08+00:00'
- );
+];
 $contactApi->addUtm($contactId, $data);
 ```
 
@@ -691,10 +694,10 @@ Same as [Get Contact](#get-contact) without the removed UTM Tags.
 ```php
 <?php
 
-$data = array(
+$data = [
 	 'eventName' => 'Score via api',
 	 'actionName' => 'Adding',
- );
+];
 $contactApi->addPoints($contactId, $pointDelta, $data);
 ```
 
@@ -726,10 +729,10 @@ actionName|Name of the action
 ```php
 <?php
 
-$data = array(
+$data = [
 	 'eventname' => 'Score via api',
 	 'actionname' => 'Subtracting',
- );
+];
 $contactApi->subtractPoints($contactId, $pointDelta, $data);
 ```
 Subtract contact points
