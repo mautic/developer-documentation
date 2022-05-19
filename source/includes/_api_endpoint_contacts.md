@@ -513,6 +513,40 @@ Contacts array. Record same as [Get Contact](#get-contact).
 > Note: In order to remove tag from contact add minus `-` before it.
 > For example: `tags: ['one', '-two']`  - sending this in request body will add tag `one` and remove tag `two` from contact.
 
+### Batch create/update error examples
+
+#### Maximum batch size limit
+
+The batch size limit is configurable with the `api_batch_max_limit` option. The default batch limit is 200 contacts per request. It can be changed in the `app/console/local.php` file. Increasing it may lead to timeouts so make sure you test your setup under heavy load before you increase this option. The response code in this case is `500 Internal Server Error`.
+
+```json
+{"errors":[{"code":500,"message":"A max of 200 entities are supported at a time.","details":[]}]}
+```
+
+#### Validation error
+
+In case some of the contacts in the batch have invalid values then the overall response code will be `HTTP/1.1 201 Created` so you'll have to check for the response code for each contact separately in the response. In this example there were 2 contacts sent and one of them had invalid email address. The key in the error JSON object equals the key in the request starting from zero. In the example response the key is `"1"` which means the secod contact had invalid email address.
+
+_Note: Make sure you are not sending multiple contacts with the same unique identifiers (email address by default) in one batch request. Those contacts will get merged into one and then the response key may not match the request key because the response will have less contacts to return._
+
+```json
+{
+  "contacts": [
+    "[here is the array of contacts that were successfully saved. Replaced by this message to save space]"
+  ],
+  "errors": {
+    "1": {
+      "code": 400,
+      "message": "email: A valid email is required.",
+      "details": {
+        "email": ["A valid email is required."]
+      },
+      "type": null
+    }
+  }
+}
+```
+
 ### Delete Contact
 ```php
 <?php
