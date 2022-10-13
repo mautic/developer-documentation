@@ -20,13 +20,9 @@ use Mautic\IntegrationsBundle\Integration\Interfaces\ConfigFormFeaturesInterface
 use Mautic\IntegrationsBundle\Integration\Interfaces\ConfigFormInterface;
 use Mautic\IntegrationsBundle\Integration\Interfaces\ConfigFormNotesInterface;
 use Mautic\IntegrationsBundle\Integration\Interfaces\ConfigFormSyncInterface;
-use Mautic\IntegrationsBundle\Mapping\MappedFieldInfoInterface;
-use Mautic\IntegrationsBundle\Sync\SyncDataExchange\Internal\Object\Company;
-use Mautic\IntegrationsBundle\Sync\SyncDataExchange\Internal\Object\Contact;
 use MauticPlugin\HelloWorldBundle\Form\Type\ConfigAuthType;
 use MauticPlugin\HelloWorldBundle\Form\Type\ConfigFeaturesType;
 use MauticPlugin\HelloWorldBundle\Integration\HelloWorldIntegration;
-use MauticPlugin\HelloWorldBundle\Sync\Mapping\Manual\MappingManualFactory;
 
 class ConfigSupport extends HelloWorldIntegration implements ConfigFormInterface, ConfigFormAuthInterface, ConfigFormFeatureSettingsInterface, ConfigFormSyncInterface, ConfigFormFeaturesInterface, ConfigFormNotesInterface
 {
