@@ -6,13 +6,18 @@ Webhook is a universal way how to send data about leads, pages, forms and events
 
 Mautic can send webhook payload on these actions:
 
-- Email open
-- Form submit
-- Lead delete
-- Lead point change
-- Lead update
-- Lead create
-- Page hit
+- Company Create/Update Event
+- Company Deleted Event
+- Contact Channel Subscription Change Event
+- Contact Company Subscription Change Event
+- Contact Segment Membership Change Event
+- Contact Deleted Event
+- Contact Identified Event
+- Contact Points Changed Event
+- Contact Updated Event
+- Email Open Event
+- Form Submit Event
+- Page Hit Event
 
 ## The webhook workflow
 
