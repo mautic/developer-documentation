@@ -443,12 +443,12 @@ assetAttachments|array|Array of asset ids
 }
 ```
 
-### Send Custom HTML to Contact
+### Send Custom HTML email to Contact
 ```php
 <?php
 $email = $emailApi->sendCustomToContact($emailId, $params);
 ```
-Send a custom HTML to existing contact. This event is saved to contact's profile, same like button Send email from contact's detail page.
+Send a custom HTML email to an existing contact. This event is saved to contact's profile, same behavior as Send email button from contact's detail page.
 
 #### HTTP Request
 
