@@ -105,6 +105,7 @@ includes:
   - api_endpoint_pages
   - api_endpoint_point_actions
   - api_endpoint_point_triggers
+  - api_endpoint_point_groups
   - api_endpoint_reports
   - api_endpoint_roles
   - api_endpoint_segments
