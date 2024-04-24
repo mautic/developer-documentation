@@ -1,3 +1,5 @@
+# This documentation is deprecated. Use https://github.com/mautic/developer-documentation-new instead.
+
 ### Mautic Developer Documentation ###
 
 Developer documentation for Mautic.
