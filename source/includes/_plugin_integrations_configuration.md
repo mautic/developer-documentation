@@ -98,3 +98,8 @@ Currently the integrations bundle provides default features. To use these featur
 The integrations bundle provides a sync framework for 3rd party services to sync with Mautic's contacts and companies. The `\Mautic\IntegrationsBundle\Integration\Interfaces\ConfigFormSyncInterface` determines the configuration options for this sync feature. Refer to the method docblocks in the interface for more details. 
 
 Read more about how to leverage the [sync framework](#integration-sync-engine).
+
+##### Config Form Notes Interface
+The interface, `\Mautic\IntegrationsBundle\Integration\Interfaces\ConfigFormNotesInterface`, provides a way to put notes, either info or warning, on the plugin configuration form.
+
+Read more about to how tos [here](#integration-configuration-form-notes)
