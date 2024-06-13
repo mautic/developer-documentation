@@ -431,6 +431,7 @@ Name|Type|Description
 ----|----|-----------
 tokens|array|Array of tokens in email
 assetAttachments|array|Array of asset ids
+ignoreDNC|boolean|`true` to send email regardless of DNC status. Default is `false`.
 
 #### Response
 
